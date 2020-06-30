@@ -18,7 +18,7 @@ class User extends Authenticatable implements JWTSubject
         'fazenda',
         'identificacao',
         'nome',
-        'senha',
+        'password',
     ];
 
     public function getJWTIdentifier()

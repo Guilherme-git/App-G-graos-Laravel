@@ -18,7 +18,7 @@ class UserController extends Controller
             $user->identificacao = $request->identificacao;
             $user->fazenda = $request->fazenda;
             $user->nome = $request->nome;
-            $user->senha = bcrypt($request->senha);
+            $user->password = bcrypt($request->password);
             $status = $user->save();
 
             if ($status == true){

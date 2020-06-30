@@ -7,14 +7,12 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     public function login(Request $request){
-        $credentials = $request->only(['identificacao', 'senha']);
+        $credentials = $request->only(['identificacao', 'password']);
 
         if (! $token = auth('api')->attempt($credentials)) {
             return response()->json(['error' => 'Identificação ou senha incorreto'], 401);
         }
-
         return $this->respondWithToken($token);
-
     }
 
     public function logout()
