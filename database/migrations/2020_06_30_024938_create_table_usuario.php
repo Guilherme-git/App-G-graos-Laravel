@@ -18,7 +18,7 @@ class CreateTableUsuario extends Migration
             $table->string('fazenda');
             $table->string('identificacao');
             $table->string('nome');
-            $table->string('senha');
+            $table->string('password');
         });
     }
 

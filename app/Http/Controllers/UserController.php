@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function cadastrar(Request $request){
         $user = DB::select("select * from usuario where identificacao= ?",
-            [$request->identificacao, $request->senha]);
+            [$request->identificacao]);
 
         if(empty($user)){
             $user = new User();
