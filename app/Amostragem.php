@@ -11,8 +11,11 @@ class Amostragem extends Model
 
     protected $fillable = [
         'id_amos',
+        'data_amos',
+        'placa_caminhao_amos',
         'peso_amos',
-        'placa_amos',
-        'users_id'
+        'estado_amos',
+        'tipo_grao',
+        'usuario'
     ];
 }

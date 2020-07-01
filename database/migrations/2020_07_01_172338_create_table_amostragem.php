@@ -17,6 +17,7 @@ class CreateTableAmostragem extends Migration
             $table->increments('id_amos');
             $table->date('data_amos');
             $table->string('placa_caminhao_amos');
+            $table->string('peso_amos');
             $table->string('estado_amos');
             $table->string('tipo_grao');
         });
