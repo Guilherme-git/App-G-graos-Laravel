@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Amostragem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AmostragemController extends Controller
 {
@@ -22,6 +23,58 @@ class AmostragemController extends Controller
        }else {
            echo json_encode(["Message" => "Erro no cadastro, tente novamente"]);
        }
+    }
+
+    public function buscarFejao(Request $request){
+        $feijao = DB::select('select * from amostragem where tipo_grao=? and estado_amos=?',[
+            'Feijão',
+            'Ativo'
+        ]);
+
+        if(empty($feijao)){
+            echo json_encode(["Message" => "Nenhuma amostragem cadastrada"]);
+        }else {
+            return $feijao;
+        }
+    }
+
+    public function buscarSoja(Request $request){
+        $soja = DB::select('select * from amostragem where tipo_grao=? and estado_amos=?',[
+            'Soja',
+            'Ativo'
+        ]);
+
+        if(empty($soja)){
+            echo json_encode(["Message" => "Nenhuma amostragem cadastrada"]);
+        }else {
+            return $soja;
+        }
+    }
+
+    public function buscarSorgo(Request $request){
+        $sorgo = DB::select('select * from amostragem where tipo_grao=? and estado_amos=?',[
+            'Sorgo',
+            'Ativo'
+        ]);
+
+        if(empty($sorgo)){
+            echo json_encode(["Message" => "Nenhuma amostragem cadastrada"]);
+        }else {
+            return $sorgo;
+        }
+    }
+
+    public function buscarMilho(Request $request){
+        $milho = DB::select('select * from amostragem where tipo_grao=? and estado_amos=?',[
+            'Milho',
+            'Ativo'
+        ]);
+
+        if(empty($milho)){
+            echo json_encode(["Message" => "Nenhuma amostragem cadastrada"]);
+        }else {
+            return $milho;
+        }
     }
 
 

@@ -31,6 +31,8 @@ class UserController extends Controller
         }
     }
 
+
+
     //Pegar o id da pessoa logada no sistema
     public function id_logged(){
         $user = $this->me() ;

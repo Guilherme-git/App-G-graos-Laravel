@@ -9,6 +9,11 @@ Route::post('cadastrar-usuario', "UserController@cadastrar");
 
 Route::group(["middleware" => ['apiJWT']],function (){
     Route::post('cadastrar-amostragem','AmostragemController@cadastrar');
+
+    Route::get('buscar-feijao','AmostragemController@buscarFejao');
+    Route::get('buscar-sorgo','AmostragemController@buscarSorgo');
+    Route::get('buscar-milho','AmostragemController@buscarMilho');
+    Route::get('buscar-soja','AmostragemController@buscarSoja');
 });
 
 
