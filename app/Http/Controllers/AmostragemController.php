@@ -26,7 +26,31 @@ class AmostragemController extends Controller
     }
 
     public function EditarAmostragem(Request $request){
-        $amostra = DB::select('select * from amostragem');
+        $amostra = DB::select('select * from amostragem where id_amos=? and usuario=?',[
+            $request->id_amos,
+            $this->id_logged()
+        ]);
+
+        if(empty($amostra)){
+            echo json_encode(["Message" => "Nenhuma amostragem cadastrada"]);
+        }else {
+           $amostra = DB::update('update amostragem set data_amos=?, placa_caminhao_amos=?, peso_amos=?,
+            estado_amos=?, tipo_grao=? where usuario=? and id_amos=?',[
+                $request->data,
+                $request->placaCaminhaoAmostragem,
+                $request->pesoAmostragem,
+                $request->estado,
+                $request->tipoGrao,
+                $this->id_logged(),
+                $request->id_amos
+           ]);
+
+           if($amostra == true){
+               echo json_encode(["Message" => "Editado com sucesso"]);
+           }else {
+               echo json_encode(["Message" => "Erro no cadastro, tente novamente"]);
+           }
+        }
     }
 
     public function buscarFejao(Request $request){
