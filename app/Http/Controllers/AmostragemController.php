@@ -25,10 +25,15 @@ class AmostragemController extends Controller
        }
     }
 
+    public function EditarAmostragem(Request $request){
+        $amostra = DB::select('select * from amostragem');
+    }
+
     public function buscarFejao(Request $request){
-        $feijao = DB::select('select * from amostragem where tipo_grao=? and estado_amos=?',[
+        $feijao = DB::select('select * from amostragem where tipo_grao=? and estado_amos=? and usuario=?',[
             'Feijão',
-            'Ativo'
+            'Ativo',
+            $this->id_logged()
         ]);
 
         if(empty($feijao)){
@@ -39,9 +44,10 @@ class AmostragemController extends Controller
     }
 
     public function buscarSoja(Request $request){
-        $soja = DB::select('select * from amostragem where tipo_grao=? and estado_amos=?',[
+        $soja = DB::select('select * from amostragem where tipo_grao=? and estado_amos=? and usuario=?',[
             'Soja',
-            'Ativo'
+            'Ativo',
+            $this->id_logged()
         ]);
 
         if(empty($soja)){
@@ -52,9 +58,10 @@ class AmostragemController extends Controller
     }
 
     public function buscarSorgo(Request $request){
-        $sorgo = DB::select('select * from amostragem where tipo_grao=? and estado_amos=?',[
+        $sorgo = DB::select('select * from amostragem where tipo_grao=? and estado_amos=? and usuario=?',[
             'Sorgo',
-            'Ativo'
+            'Ativo',
+            $this->id_logged()
         ]);
 
         if(empty($sorgo)){
@@ -65,9 +72,10 @@ class AmostragemController extends Controller
     }
 
     public function buscarMilho(Request $request){
-        $milho = DB::select('select * from amostragem where tipo_grao=? and estado_amos=?',[
+        $milho = DB::select('select * from amostragem where tipo_grao=? and estado_amos=? and usuario=?',[
             'Milho',
-            'Ativo'
+            'Ativo',
+            $this->id_logged()
         ]);
 
         if(empty($milho)){
@@ -76,6 +84,8 @@ class AmostragemController extends Controller
             return $milho;
         }
     }
+
+
 
 
     //Pegar o id da pessoa logada no sistema
