@@ -10,11 +10,11 @@ class AmostragemController extends Controller
 {
     public function cadastrar(Request $request){
        $amostragem = new Amostragem();
-       $amostragem->data_amos = $request->data;
-       $amostragem->placa_caminhao_amos = $request->placaCaminhaoAmostragem;
-       $amostragem->peso_amos = $request->pesoAmostragem;
-       $amostragem->estado_amos = $request->estado;
-       $amostragem->tipo_grao = $request->tipoGrao;
+       $amostragem->data = $request->data;
+       $amostragem->placaCaminhaoAmostragem = $request->placaCaminhaoAmostragem;
+       $amostragem->pesoAmostragem = $request->pesoAmostragem;
+       $amostragem->estado = $request->estado;
+       $amostragem->tipoGrao = $request->tipoGrao;
        $amostragem->usuario = $this->id_logged();
        $amostragem->save();
 
@@ -34,8 +34,8 @@ class AmostragemController extends Controller
         if(empty($amostra)){
             echo json_encode(["Message" => "Nenhuma amostragem cadastrada"]);
         }else {
-           $amostra = DB::update('update amostragem set data_amos=?, placa_caminhao_amos=?, peso_amos=?,
-            estado_amos=?, tipo_grao=? where usuario=? and id_amos=?',[
+           $amostra = DB::update('update amostragem set data=?,placaCaminhaoAmostragem=?, pesoAmostragem=?,
+            estado=?,tipoGrao=? where usuario=? and id_amos=?',[
                 $request->data,
                 $request->placaCaminhaoAmostragem,
                 $request->pesoAmostragem,
@@ -54,7 +54,7 @@ class AmostragemController extends Controller
     }
 
     public function buscarFejao(Request $request){
-        $feijao = DB::select('select * from amostragem where tipo_grao=? and estado_amos=? and usuario=?',[
+        $feijao = DB::select('select * from amostragem where tipoGrao=? and estado=? and usuario=?',[
             'Feijão',
             'Ativo',
             $this->id_logged()
@@ -68,7 +68,7 @@ class AmostragemController extends Controller
     }
 
     public function buscarSoja(Request $request){
-        $soja = DB::select('select * from amostragem where tipo_grao=? and estado_amos=? and usuario=?',[
+        $soja = DB::select('select * from amostragem where tipoGrao=? and estado=? and usuario=?',[
             'Soja',
             'Ativo',
             $this->id_logged()
@@ -82,7 +82,7 @@ class AmostragemController extends Controller
     }
 
     public function buscarSorgo(Request $request){
-        $sorgo = DB::select('select * from amostragem where tipo_grao=? and estado_amos=? and usuario=?',[
+        $sorgo = DB::select('select * from amostragem where tipoGrao=? and estado=? and usuario=?',[
             'Sorgo',
             'Ativo',
             $this->id_logged()
@@ -96,7 +96,7 @@ class AmostragemController extends Controller
     }
 
     public function buscarMilho(Request $request){
-        $milho = DB::select('select * from amostragem where tipo_grao=? and estado_amos=? and usuario=?',[
+        $milho = DB::select('select * from amostragem where tipoGrao=? and estado=? and usuario=?',[
             'Milho',
             'Ativo',
             $this->id_logged()
