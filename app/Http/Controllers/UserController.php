@@ -31,6 +31,14 @@ class UserController extends Controller
         }
     }
 
+    public function MostrarUsuario(){
+        $usuario = DB::select('select * from usuario where id=?',[
+            $this->id_logged()
+        ]);
+
+        return $usuario;
+    }
+
 
 
     //Pegar o id da pessoa logada no sistema
