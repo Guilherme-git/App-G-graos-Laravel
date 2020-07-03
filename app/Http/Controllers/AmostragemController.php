@@ -68,7 +68,7 @@ class AmostragemController extends Controller
     }
 
     public function buscarSoja(Request $request){
-        $soja = DB::select('select * from amostragem where tipoGrao=? and estado=? and usuario=?  order by id_amos desc',[
+        $soja = DB::select('select * from amostragem where tipoGrao=? and estado=? and usuario=? order by id_amos desc',[
             'Soja',
             'Ativo',
             $this->id_logged()
