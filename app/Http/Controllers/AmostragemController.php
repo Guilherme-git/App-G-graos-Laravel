@@ -54,7 +54,7 @@ class AmostragemController extends Controller
     }
 
     public function buscarFejao(Request $request){
-        $feijao = DB::select('select * from amostragem where tipoGrao=? and estado=? and usuario=?',[
+        $feijao = DB::select('select * from amostragem where tipoGrao=? and estado=? and usuario=?  order by id_amos desc',[
             'Feijão',
             'Ativo',
             $this->id_logged()
@@ -68,7 +68,7 @@ class AmostragemController extends Controller
     }
 
     public function buscarSoja(Request $request){
-        $soja = DB::select('select * from amostragem where tipoGrao=? and estado=? and usuario=?',[
+        $soja = DB::select('select * from amostragem where tipoGrao=? and estado=? and usuario=?  order by id_amos desc',[
             'Soja',
             'Ativo',
             $this->id_logged()
@@ -82,7 +82,7 @@ class AmostragemController extends Controller
     }
 
     public function buscarSorgo(Request $request){
-        $sorgo = DB::select('select * from amostragem where tipoGrao=? and estado=? and usuario=?',[
+        $sorgo = DB::select('select * from amostragem where tipoGrao=? and estado=? and usuario=?  order by id_amos desc',[
             'Sorgo',
             'Ativo',
             $this->id_logged()
@@ -96,7 +96,7 @@ class AmostragemController extends Controller
     }
 
     public function buscarMilho(Request $request){
-        $milho = DB::select('select * from amostragem where tipoGrao=? and estado=? and usuario=?',[
+        $milho = DB::select('select * from amostragem where tipoGrao=? and estado=? and usuario=? order by id_amos desc',[
             'Milho',
             'Ativo',
             $this->id_logged()
