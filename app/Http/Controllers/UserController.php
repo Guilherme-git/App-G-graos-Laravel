@@ -32,19 +32,35 @@ class UserController extends Controller
     }
 
     public function EditarUsuario(Request $request){
-        $update = DB::update('update usuario set fazenda=?, identificacao=?, nome=?, password=? where id=?',[
-            $request->fazenda,
-            $request->identificacao,
-            $request->nome,
-            $request = bcrypt($request->password),
-            $this->id_logged()
-        ]);
+        if($request->password != null){
+            $update = DB::update('update usuario set fazenda=?, identificacao=?, nome=?, password=? where id=?',[
+                $request->fazenda,
+                $request->identificacao,
+                $request->nome,
+                $request = bcrypt($request->password),
+                $this->id_logged()
+            ]);
 
-        if($update == true){
-            echo json_encode(["Message" => "Editado com sucesso"]);
+            if($update == true){
+                echo json_encode(["Message" => "Editado com sucesso"]);
+            }else {
+                echo json_encode(["Message" => "Erro na edição, tente novamente"]);
+            }
         }else {
-            echo json_encode(["Message" => "Erro na edição, tente novamente"]);
+            $update = DB::update('update usuario set fazenda=?, identificacao=?, nome=?, where id=?',[
+                $request->fazenda,
+                $request->identificacao,
+                $request->nome,
+                $this->id_logged()
+            ]);
+
+            if($update == true){
+                echo json_encode(["Message" => "Editado com sucesso"]);
+            }else {
+                echo json_encode(["Message" => "Erro na edição, tente novamente"]);
+            }
         }
+
     }
 
     public function MostrarUsuario(){
