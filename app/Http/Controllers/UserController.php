@@ -9,12 +9,10 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     public function cadastrar(Request $request){
-        $user = DB::select("select * from usuario where identificacao= ?",
-            [$request->identificacao]);
+        $user = User::where('identificacao','=',$request->identificacao)->get();
 
-        if(empty($user)){
+        if($user->get(0) == null){
             $user = new User();
-
             $user->identificacao = $request->identificacao;
             $user->fazenda = $request->fazenda;
             $user->nome = $request->nome;
@@ -33,13 +31,12 @@ class UserController extends Controller
 
     public function EditarUsuario(Request $request){
         if($request->password != null){
-            $update = DB::update('update usuario set fazenda=?, identificacao=?, nome=?, password=? where id=?',[
-                $request->fazenda,
-                $request->identificacao,
-                $request->nome,
-                $request = bcrypt($request->password),
-                $this->id_logged()
-            ]);
+            $usuario = User::find($this->id_logged());
+            $usuario->fazenda = $request->fazenda;
+            $usuario->identificacao = $request->identificacao;
+            $usuario->nome = $request->nome;
+            $usuario->password = bcrypt($request->password);
+            $update = $usuario->save();
 
             if($update == true){
                 echo json_encode(["Message" => "Editado com sucesso"]);
@@ -47,12 +44,11 @@ class UserController extends Controller
                 echo json_encode(["Message" => "Erro na edição, tente novamente"]);
             }
         }else {
-            $update = DB::update('update usuario set fazenda=?, identificacao=?, nome=?, where id=?',[
-                $request->fazenda,
-                $request->identificacao,
-                $request->nome,
-                $this->id_logged()
-            ]);
+            $usuario = User::find($this->id_logged());
+            $usuario->fazenda = $request->fazenda;
+            $usuario->identificacao = $request->identificacao;
+            $usuario->nome = $request->nome;
+            $update = $usuario->save();
 
             if($update == true){
                 echo json_encode(["Message" => "Editado com sucesso"]);
@@ -60,14 +56,10 @@ class UserController extends Controller
                 echo json_encode(["Message" => "Erro na edição, tente novamente"]);
             }
         }
-
     }
 
     public function MostrarUsuario(){
-        $usuario = DB::select('select * from usuario where id=?',[
-            $this->id_logged()
-        ]);
-
+        $usuario = User::find($this->id_logged());
         return $usuario;
     }
 
