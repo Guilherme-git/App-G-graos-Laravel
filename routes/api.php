@@ -16,6 +16,9 @@ Route::group(["middleware" => ['apiJWT']],function (){
     Route::get('buscar-milho','AmostragemController@buscarMilho');
     Route::get('buscar-soja','AmostragemController@buscarSoja');
 
+    //Classificacao
+    Route::post('cadastrar-classificacao','ClassificacaoController@cadastrar');
+
     //Usuario
     Route::get('mostrar-usuario','UserController@MostrarUsuario');
     Route::post('editar-usuario','UserController@EditarUsuario');

@@ -41,7 +41,9 @@ class CreateTableClassificacao extends Migration
             $table->string('resultGrupo')->nullable();
             $table->string('resultClasse')->nullable();
             $table->unsignedInteger('amostragem')->nullable();
+            $table->unsignedInteger('usuario')->nullable();
             $table->foreign('amostragem')->references('id_amos')->on('amostragem');
+            $table->foreign('usuario')->references('id')->on('usuario');
         });
     }
 
