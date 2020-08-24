@@ -11,8 +11,6 @@ Route::group(["middleware" => ['apiJWT']],function (){
     //Amostragem
     Route::post('cadastrar-amostragem','AmostragemController@cadastrar');
     Route::post('editar-amostragem','AmostragemController@EditarAmostragem');
-
-    //Graos
     Route::get('buscar-feijao','AmostragemController@buscarFejao');
     Route::get('buscar-sorgo','AmostragemController@buscarSorgo');
     Route::get('buscar-milho','AmostragemController@buscarMilho');
