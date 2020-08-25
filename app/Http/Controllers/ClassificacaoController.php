@@ -37,7 +37,7 @@ class ClassificacaoController extends Controller
         $classificacao->resultTipo = $request->resultTipo;
         $classificacao->resultGrupo = $request->resultGrupo;
         $classificacao->resultClasse = $request->resultClasse;
-        $classificacao->amostragem = $request->amostragem;
+        $classificacao->amostragem = $request->amostragem["id_amos"];
         $classificacao->usuario = $this->id_logged();
         $classificacao->save();
 
