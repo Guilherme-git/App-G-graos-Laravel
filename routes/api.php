@@ -18,6 +18,8 @@ Route::group(["middleware" => ['apiJWT']],function (){
 
     //Classificacao
     Route::post('cadastrar-classificacao','ClassificacaoController@cadastrar');
+    Route::get('buscar-classificacao/{id}','ClassificacaoController@buscarClassificacao');
+    Route::post('editar-classificacao','ClassificacaoController@editarClassificacao');
 
     //Usuario
     Route::get('mostrar-usuario','UserController@MostrarUsuario');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Classificacao;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClassificacaoController extends Controller
 {
@@ -45,6 +46,63 @@ class ClassificacaoController extends Controller
         }else {
             echo json_encode(["Message" => "Erro no cadastro, tente novamente"]);
         }
+    }
+
+    public function buscarClassificacao(Request  $request)
+    {
+        $classificacao = DB::table('classificacao')
+            ->where('usuario', $this->id_logged())
+            ->where('amostragem', $request->id)
+            ->get();
+
+        if($classificacao->get(0) == null){
+            return json_encode(["Message" => "Nenhuma classificação encontrada"]);
+        }else {
+            return json_encode($classificacao);
+        }
+    }
+
+    public function editarClassificacao(Request $request)
+    {
+        $classificacao = Classificacao::find($request->id);
+
+        if($classificacao == null){
+            return json_encode(["Message" => "Nenhuma classificação encontrada"]);
+        }else {
+            $classificacao->peso = $request->pesoAmostra;
+            $classificacao->umidade = $request->umidade;
+            $classificacao->impureza = $request->impureza;
+            $classificacao->esverdeados = $request->esverdeados;
+            $classificacao->partidosQuebradosAmassados = $request->partidosQuebradosAmassados;
+            $classificacao->totalavariados = $request->totalavariados;
+            $classificacao->quantidadeGraosInicial = $request->quantidadeGraosInicial;
+            $classificacao->quantidadeGraosDescontado = $request->quantidadeGraosDescontado;
+            $classificacao->quantidadeGraosFinal = $request->quantidadeGraosFinal;
+            $classificacao->dataAtual = $request->dataAtual;
+            $classificacao->queimado = $request->queimado;
+            $classificacao->mofado = $request->mofado;
+            $classificacao->germinado = $request->germinado;
+            $classificacao->fermentado = $request->fermentado;
+            $classificacao->ardido = $request->ardido;
+            $classificacao->danificado = $request->danificado;
+            $classificacao->imaturo = $request->imaturo;
+            $classificacao->choco = $request->choco;
+            $classificacao->gessados = $request->gessados;
+            $classificacao->carunchados = $request->carunchados;
+            $classificacao->brotados = $request->brotados;
+            $classificacao->fragmentados = $request->fragmentados;
+            $classificacao->resultTipo = $request->resultTipo;
+            $classificacao->resultGrupo = $request->resultGrupo;
+            $classificacao->resultClasse = $request->resultClasse;
+            $classificacao->save();
+
+            if($classificacao == true){
+                echo json_encode(["Message" => "Classificação editada com sucesso"]);
+            }else {
+                echo json_encode(["Message" => "Erro no editar, tente novamente"]);
+            }
+        }
+
     }
 
 //Pegar o id da pessoa logada no sistema
