@@ -51,8 +51,10 @@ class ClassificacaoController extends Controller
     public function buscarClassificacao(Request  $request)
     {
         $classificacao = DB::table('classificacao')
-            ->where('usuario', $this->id_logged())
             ->where('amostragem', $request->id)
+            ->where('classificacao.usuario','=',$this->id_logged())
+            ->join('amostragem','classificacao.amostragem','=','amostragem.id_amos')
+            ->join('usuario','classificacao.usuario','=','usuario.id')
             ->get();
 
         if($classificacao->get(0) == null){
