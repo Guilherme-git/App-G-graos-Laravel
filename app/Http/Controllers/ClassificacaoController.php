@@ -53,8 +53,6 @@ class ClassificacaoController extends Controller
         $classificacao = DB::table('classificacao')
             ->where('amostragem', $request->id)
             ->where('classificacao.usuario','=',$this->id_logged())
-            ->join('amostragem','classificacao.amostragem','=','amostragem.id_amos')
-            ->join('usuario','classificacao.usuario','=','usuario.id')
             ->get();
 
         if($classificacao->get(0) == null){
