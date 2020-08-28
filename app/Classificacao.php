@@ -11,7 +11,7 @@ class Classificacao extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
-        'peso',
+        'pesoAmostra',
         'umidade',
         'impureza',
         'esverdeados',

@@ -15,7 +15,7 @@ class CreateTableClassificacao extends Migration
     {
         Schema::create('classificacao', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('peso')->nullable();
+            $table->string('pesoAmostra')->nullable();
             $table->string('umidade')->nullable();
             $table->string('impureza')->nullable();
             $table->string('esverdeados')->nullable();

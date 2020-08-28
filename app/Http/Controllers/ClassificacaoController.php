@@ -12,7 +12,7 @@ class ClassificacaoController extends Controller
     {
         $classificacao = new Classificacao();
 
-        $classificacao->peso = $request->pesoAmostra;
+        $classificacao->pesoAmostra = $request->pesoAmostra;
         $classificacao->umidade = $request->umidade;
         $classificacao->impureza = $request->impureza;
         $classificacao->esverdeados = $request->esverdeados;
