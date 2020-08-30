@@ -20,6 +20,8 @@ class CreateTableAmostragem extends Migration
             $table->string('estado');
             $table->string('pesoAmostragem');
             $table->string('placaCaminhaoAmostragem');
+            $table->string('responsavelColeta');
+            $table->string('requerente');
             $table->string('tipoGrao');
         });
 

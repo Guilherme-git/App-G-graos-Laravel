@@ -69,7 +69,7 @@ class ClassificacaoController extends Controller
         if($classificacao == null){
             return json_encode(["Message" => "Nenhuma classificação encontrada"]);
         }else {
-            $classificacao->peso = $request->pesoAmostra;
+            $classificacao->pesoAmostra = $request->pesoAmostra;
             $classificacao->umidade = $request->umidade;
             $classificacao->impureza = $request->impureza;
             $classificacao->esverdeados = $request->esverdeados;

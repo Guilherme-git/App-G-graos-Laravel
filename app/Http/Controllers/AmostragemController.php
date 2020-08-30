@@ -11,6 +11,8 @@ class AmostragemController extends Controller
     public function cadastrar(Request $request){
        $amostragem = new Amostragem();
        $amostragem->data = $request->data;
+       $amostragem->requerente = $request->requerente;
+       $amostragem->responsavelColeta = $request->responsavelColeta;
        $amostragem->placaCaminhaoAmostragem = $request->placaCaminhaoAmostragem;
        $amostragem->pesoAmostragem = $request->pesoAmostragem;
        $amostragem->estado = $request->estado;
@@ -35,12 +37,14 @@ class AmostragemController extends Controller
             echo json_encode(["Message" => "Nenhuma amostragem cadastrada"]);
         }else {
            $amostra = DB::update('update amostragem set data=?,placaCaminhaoAmostragem=?, pesoAmostragem=?,
-            estado=?,tipoGrao=? where usuario=? and id_amos=?',[
+            estado=?,tipoGrao=?, requerente=?, responsavelColeta=? where usuario=? and id_amos=?',[
                 $request->data,
                 $request->placaCaminhaoAmostragem,
                 $request->pesoAmostragem,
                 $request->estado,
                 $request->tipoGrao,
+                $request->requerente,
+                $request->responsavelColeta,
                 $this->id_logged(),
                 $request->id_amos
            ]);

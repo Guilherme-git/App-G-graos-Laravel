@@ -17,6 +17,8 @@ class Amostragem extends Model
         'pesoAmostragem',
         'estado',
         'tipoGrao',
+        'requerente',
+        'responsavelColeta',
         'usuario'
     ];
 }
