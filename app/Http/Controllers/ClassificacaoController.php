@@ -39,6 +39,15 @@ class ClassificacaoController extends Controller
         $classificacao->resultClasse = $request->resultClasse;
         $classificacao->amostragem = $request->amostragem["id_amos"];
         $classificacao->usuario = $this->id_logged();
+        $classificacao->laudo_pqa = $request->laudo_pqa;
+        $classificacao->laudo_qi = $request->laudo_qi;
+        $classificacao->laudo_qu = $request->laudo_qu;
+        $classificacao->laudo_impurezasRemovidas = $request->laudo_impurezasRemovidas;
+        $classificacao->laudo_produto_inicial = $request->laudo_produto_inicial;
+        $classificacao->laudo_produto_limpo = $request->laudo_produto_limpo;
+        $classificacao->laudo_agua_removida = $request->laudo_agua_removida;
+        $classificacao->laudo_total_desconto = $request->laudo_total_desconto;
+        $classificacao->laudo_produto_armazenado = $request->laudo_produto_armazenado;
         $classificacao->save();
 
         if($classificacao == true){
@@ -94,6 +103,15 @@ class ClassificacaoController extends Controller
             $classificacao->resultTipo = $request->resultTipo;
             $classificacao->resultGrupo = $request->resultGrupo;
             $classificacao->resultClasse = $request->resultClasse;
+            $classificacao->laudo_pqa = $request->laudo_pqa;
+            $classificacao->laudo_qi = $request->laudo_qi;
+            $classificacao->laudo_qu = $request->laudo_qu;
+            $classificacao->laudo_impurezasRemovidas = $request->laudo_impurezasRemovidas;
+            $classificacao->laudo_produto_inicial = $request->laudo_produto_inicial;
+            $classificacao->laudo_produto_limpo = $request->laudo_produto_limpo;
+            $classificacao->laudo_agua_removida = $request->laudo_agua_removida;
+            $classificacao->laudo_total_desconto = $request->laudo_total_desconto;
+            $classificacao->laudo_produto_armazenado = $request->laudo_produto_armazenado;
             $classificacao->save();
 
             if($classificacao == true){

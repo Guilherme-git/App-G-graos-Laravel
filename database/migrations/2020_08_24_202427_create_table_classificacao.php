@@ -40,6 +40,15 @@ class CreateTableClassificacao extends Migration
             $table->string('resultTipo')->nullable();
             $table->string('resultGrupo')->nullable();
             $table->string('resultClasse')->nullable();
+            $table->string('laudo_pqa')->nullable();
+            $table->string('laudo_qi')->nullable();
+            $table->string('laudo_qu')->nullable();
+            $table->string('laudo_impurezasRemovidas')->nullable();
+            $table->string('laudo_produto_inicial')->nullable();
+            $table->string('laudo_produto_limpo')->nullable();
+            $table->string('laudo_agua_removida')->nullable();
+            $table->string('laudo_total_desconto')->nullable();
+            $table->string('laudo_produto_armazenado')->nullable();
             $table->unsignedInteger('amostragem')->nullable();
             $table->unsignedInteger('usuario')->nullable();
             $table->foreign('amostragem')->references('id_amos')->on('amostragem');

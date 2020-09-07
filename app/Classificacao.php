@@ -37,6 +37,15 @@ class Classificacao extends Model
         'resultGrupo',
         'resultClasse',
         'amostragem',
-        'usuario'
+        'usuario',
+        'laudo_pqa',
+        'laudo_qi',
+        'laudo_qu',
+        'laudo_impurezasRemovidas',
+        'laudo_produto_inicial',
+        'laudo_produto_limpo',
+        'laudo_agua_removida',
+        'laudo_total_desconto',
+        'laudo_produto_armazenado',
     ];
 }
