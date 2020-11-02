@@ -49,6 +49,16 @@ class CreateTableClassificacao extends Migration
             $table->string('laudo_agua_removida')->nullable();
             $table->string('laudo_total_desconto')->nullable();
             $table->string('laudo_produto_armazenado')->nullable();
+
+            $table->string('graoDuro')->nullable();
+            $table->string('graoDentado')->nullable();
+            $table->string('graoSemiduro')->nullable();
+            $table->string('graoAmarelo')->nullable();
+            $table->string('graoBranco')->nullable();
+            $table->string('graoCores')->nullable();
+            $table->string('insetosMortos')->nullable();
+            $table->string('atacadosInsetos')->nullable();
+
             $table->unsignedInteger('amostragem')->nullable();
             $table->unsignedInteger('usuario')->nullable();
             $table->foreign('amostragem')->references('id_amos')->on('amostragem');

@@ -48,6 +48,14 @@ class ClassificacaoController extends Controller
         $classificacao->laudo_agua_removida = $request->laudo_agua_removida;
         $classificacao->laudo_total_desconto = $request->laudo_total_desconto;
         $classificacao->laudo_produto_armazenado = $request->laudo_produto_armazenado;
+        $classificacao->graoDuro = $request->graoDuro;
+        $classificacao->graoDentado = $request->graoDentado;
+        $classificacao->graoSemiduro = $request->graoSemiduro;
+        $classificacao->graoAmarelo = $request->graoAmarelo;
+        $classificacao->graoBranco = $request->graoBranco;
+        $classificacao->graoCores = $request->graoCores;
+        $classificacao->insetosMortos = $request->insetosMortos;
+        $classificacao->atacadosInsetos = $request->atacadosInsetos;
         $classificacao->save();
 
         if($classificacao == true){
@@ -112,6 +120,14 @@ class ClassificacaoController extends Controller
             $classificacao->laudo_agua_removida = $request->laudo_agua_removida;
             $classificacao->laudo_total_desconto = $request->laudo_total_desconto;
             $classificacao->laudo_produto_armazenado = $request->laudo_produto_armazenado;
+            $classificacao->graoDuro = $request->graoDuro;
+            $classificacao->graoDentado = $request->graoDentado;
+            $classificacao->graoSemiduro = $request->graoSemiduro;
+            $classificacao->graoAmarelo = $request->graoAmarelo;
+            $classificacao->graoBranco = $request->graoBranco;
+            $classificacao->graoCores = $request->graoCores;
+            $classificacao->insetosMortos = $request->insetosMortos;
+            $classificacao->atacadosInsetos = $request->atacadosInsetos;
             $classificacao->save();
 
             if($classificacao == true){

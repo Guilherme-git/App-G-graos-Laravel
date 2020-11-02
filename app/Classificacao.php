@@ -47,5 +47,14 @@ class Classificacao extends Model
         'laudo_agua_removida',
         'laudo_total_desconto',
         'laudo_produto_armazenado',
+
+        'graoDuro',
+        'graoDentado',
+        'graoSemiduro',
+        'graoAmarelo',
+        'graoBranco',
+        'graoCores',
+        'insetosMortos',
+        'atacadosInsetos',
     ];
 }
